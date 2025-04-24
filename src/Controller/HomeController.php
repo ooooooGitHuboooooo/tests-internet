@@ -42,7 +42,6 @@ final class HomeController extends AbstractController
     #[Route('/getList/{name?}', name: 'app_get_list')]
     public function getList(EntityManagerInterface $entityManager, ?string $name)
     {
-        echo $name;
         if ($name)
         {
             $users = $entityManager->getRepository(User::class)->createQueryBuilder('u')
