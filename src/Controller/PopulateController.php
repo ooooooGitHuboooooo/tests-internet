@@ -30,7 +30,9 @@ final class PopulateController extends AbstractController
         $content = $output->fetch();
 
         return $this->render('populate/index.html.twig', [
-            'cliOutput' => $content,
+            'cliOutput' => array_filter(explode('<br />', nl2br($content)), function($valeur) {
+                return !empty(trim($valeur));
+            }),
         ]);
     }
 }

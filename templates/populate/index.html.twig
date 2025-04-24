@@ -4,6 +4,16 @@
 
 {% block body %}
     <div class="text-center mt-5">
-        {{ cliOutput|nl2br }}
+        {% for line in cliOutput %}
+            {% if loop.last %}
+                <div class="alert alert-success">
+                    {{ line }}
+                </div>
+            {% else %}
+                <div class="text-warning mb-2">
+                    {{ line }}
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
 {% endblock %}
