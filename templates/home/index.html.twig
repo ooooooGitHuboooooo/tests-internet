@@ -3,11 +3,30 @@
 {% block title %}Bienvenue à l'affichage des utilisateurs !{% endblock %}
 
 {% block body %}
-    <div class="d-flex justify-content-center align-items-center h-100">
-        <ul>
-        {% for user in users %}
-            <li>{{ user.name }}</li>
-        {% endfor %}
-        </ul>
+    <div class="text-center alert alert-info">
+        Le sujet choisi est des <u>prénoms</u> avec un <u>âge</u> aléatoire.
+    </div>
+    <div class="mt-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.name }}</td>
+                        <td class="text-center" style="width: 100px;">
+                            <img src="/icons/detail.png" class="detail">
+                            <img src="/icons/delete.svg" class="delete">
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}

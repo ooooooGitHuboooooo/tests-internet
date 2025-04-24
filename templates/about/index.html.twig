@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A propos !{% endblock %}
+
+{% block body %}
+<div class="text-center mt-5">
+    <div>
+        Test réalisé pour la société <u>Jam Diffus'</u>
+    </div>
+    <div class="fw-bold mt-2">
+        Sujet :
+    </div>
+    <div class="d-flex justify-content-center w-100 mt-2">
+        <div class="text-start">
+            <i>Composant à utiliser impérativement :</i>
+            <ul>
+                <li>stack technique / langages : PHP 7, MySQL, HTML 5, CSS, JS;</li>
+                <li>phpQuery :  Cf. PJ somesh.zip</li>
+                <li>jQuery :  https://jquery.com/</li>
+            </ul>
+            <i>Ce qu’il faut réaliser (sujet libre) :</i>
+            <ul>
+                <li>initialiser et exploiter une connexion BDD;</li>
+                <li>écrire un script permettant de peupler la BDD (doit pouvoir être exécuté plusieurs fois sans aucun conflit);</li>
+                <li>charger et modeler un template HTML grâce à phpQuery;</li>
+                <li>récupérer des éléments en BDD et les afficher sous forme de liste;</li>
+                <li>permettre d'afficher le détail de chaque élément dans un popup dynamique, dont le contenu est chargé en AJAX;</li>
+                <li>permettre de filtrer la liste selon un ou plusieurs critères, en rafraîchissant ladite liste via AJAX;</li>
+                <li>permettre de supprimer une ligne depuis la liste après confirmation de la volonté de suppression via un popup dynamique;</li>
+            </ul>
+            <i>Livrables attendus (le tout dans une archive ZIP en conservant la cohérence fonctionnelle de l'arborescence du "projet") :</i>
+            <ul>
+                <li>les dépendances (à minima : phpQuery et jQuery);</li>
+                <li>le script pour peupler la BDD;</li>
+                <li>le ou les scripts PHP (en précisant quel est le "launcher" à défaut d'un "index.php" explicite);</li>
+                <li>le ou les templates HTML ;</li>
+                <li>la structure de la BDD si toutefois elle n'est pas écrite par le script permettant de la peupler.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
