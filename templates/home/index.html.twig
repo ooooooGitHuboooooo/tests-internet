@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue à l'affichage des utilisateurs !{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-center align-items-center h-100">
+        <ul>
+        {% for user in users %}
+            <li>{{ user.name }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
