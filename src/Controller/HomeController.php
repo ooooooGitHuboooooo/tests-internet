@@ -19,4 +19,45 @@ final class HomeController extends AbstractController
             'users' => $users,
         ]);
     }
+
+    #[Route('/detail/{id}', name: 'app_detail')]
+    public function detail(EntityManagerInterface $entityManager, int $id): Response
+    {
+        $user = $entityManager->getRepository(User::class)->find($id);
+
+        return new Response($user->getAge());
+    }
+
+    #[Route('/delete/{id}', name: 'app_delete')]
+    public function delete(EntityManagerInterface $entityManager, int $id): Response
+    {
+        $user = $entityManager->getRepository(User::class)->find($id);
+
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        return new Response('success');
+    }
+
+    #[Route('/getList/{name?}', name: 'app_get_list')]
+    public function getList(EntityManagerInterface $entityManager, ?string $name)
+    {
+        echo $name;
+        if ($name)
+        {
+            $users = $entityManager->getRepository(User::class)->createQueryBuilder('u')
+                        ->andWhere("u.name like CONCAT('%', :name, '%')")
+                        ->setParameter('name', $name)
+                        ->getQuery()
+                        ->getResult();
+        }
+        else
+        {
+            $users = $entityManager->getRepository(User::class)->findAll();
+        }
+
+        return $this->render('home/getList.html.twig', [
+            'users' => $users,
+        ]); 
+    }
 }

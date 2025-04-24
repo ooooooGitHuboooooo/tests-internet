@@ -3,30 +3,98 @@
 {% block title %}Bienvenue à l'affichage des utilisateurs !{% endblock %}
 
 {% block body %}
-    <div class="text-center alert alert-info">
-        Le sujet choisi est des <u>prénoms</u> avec un <u>âge</u> aléatoire.
+<div class="modal" id="modal_age" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Age de la personne</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>La personne a <span id="age"></span> ans.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
     </div>
-    <div class="mt-4">
-        <table class="table">
-            <thead>
+  </div>
+</div>
+
+<div class="modal" id="modal_confirm_delete" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmation de suppression</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Confirmer-vous la suppression de cet utilisateur ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="confirm_modal_delete" data-bs-dismiss="modal" class="btn btn-danger">Oui</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div aria-live="polite" aria-atomic="true" class="position-relative">
+  <!-- Position it: -->
+  <!-- - `.toast-container` for spacing between toasts -->
+  <!-- - `top-0` & `end-0` to position the toasts in the upper right corner -->
+  <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
+  <div class="toast-container top-0 end-0 p-3">
+
+    <!-- Then put toasts within -->
+    <div class="toast" id="toast_delete_confirm" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Suppression</strong>
+        <small class="text-muted">à l'instant</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        L'utilisateur a bien été supprimé.
+      </div>
+    </div>
+</div>
+
+<div class="text-center alert alert-info">
+    Le sujet choisi est des <u>prénoms</u> avec un <u>âge</u> aléatoire.
+</div>
+<div class="mt-4">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Actions</th>
+            </tr>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">
+                    <input type="text" class="filter_name">
+                </th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Prénom</th>
-                    <th scope="col">Actions</th>
+                    <td>
+                        {{ user.id }}
+                    </td>
+                    <td>
+                        {{ user.name }}
+                    </td>
+                    <td class="text-center" style="width: 100px;">
+                        <div class="d-flex justify-content-center">
+                            <img src="/images/detail.png" class="detail" role="button" data-id="{{ user.id }}" style="width: 24px;">
+                            <img src="/images/delete.svg" class="delete"  role="button" data-id="{{ user.id }}" style="width: 24px;">
+                        </div>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                {% for user in users %}
-                    <tr>
-                        <td>{{ user.id }}</td>
-                        <td>{{ user.name }}</td>
-                        <td class="text-center" style="width: 100px;">
-                            <img src="/icons/detail.png" class="detail">
-                            <img src="/icons/delete.svg" class="delete">
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
