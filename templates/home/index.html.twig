@@ -78,22 +78,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for user in users %}
-                <tr>
-                    <td>
-                        {{ user.id }}
-                    </td>
-                    <td>
-                        {{ user.name }}
-                    </td>
-                    <td class="text-center" style="width: 100px;">
-                        <div class="d-flex justify-content-center">
-                            <img src="/images/detail.png" class="detail" role="button" data-id="{{ user.id }}" style="width: 24px;">
-                            <img src="/images/delete.svg" class="delete"  role="button" data-id="{{ user.id }}" style="width: 24px;">
-                        </div>
-                    </td>
-                </tr>
-            {% endfor %}
+            {% include 'home/getList.html.twig' %} 
         </tbody>
     </table>
 </div>
