@@ -1,6 +1,6 @@
 Le test est accessible en visualisation à l'adresse suivante :
 
-http://jam-diffus.jeremy-hennegrave.net:8080/
+https://jam-diffus.jeremy-hennegrave.net:8080/
 
 Le script dans le repertoire "database" permet de structurer la base (attention a bien changé le mot de passe de l'utilisateur)
 
